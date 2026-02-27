@@ -1,0 +1,14 @@
+python-dotenv
+streamlit
+langchain-community
+langchain
+langchain-text-splitters
+langchain-huggingface
+unstructured
+unstructured[pdf]
+langchain-groq
+langchain-chroma
+langchain-unstructured
+sentence-transformers
+langchain-classic
+pytesseract
