@@ -19,9 +19,8 @@ if uploaded_files:
             f.write(uploaded_file.getbuffer())
 
         # Process PDF to Chroma vector store
-        process_document_to_chroma_db(uploaded_file.name)
+        process_document_to_chroma_db(save_path)
 
-    st.success("All documents processed successfully!")
 
 # Ask question
 user_question = st.text_area("Ask your question about the documents")

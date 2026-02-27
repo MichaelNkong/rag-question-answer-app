@@ -1,4 +1,6 @@
 import os
+from os.path import splitext
+
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -22,26 +24,41 @@ llm = ChatGroq(
 )
 
 def process_document_to_chroma_db(file_path):
-    loader = PyPDFLoader(file_path)
-    documents = loader.load()
+    """
+    Process a PDF file into Chroma vector store.
+    - Splits PDFs per page (memory efficient)
+    - Chunks text per page
+    - Adds to existing vectorDB if present
+    """
+    try:
+        # Load PDF, split pages
+        loader = PyPDFLoader(file_path)
+        documents = loader.load()
 
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=150
-    )
-
-    texts = text_splitter.split_documents(documents)
-
-    # If vector DB doesn't exist → create it
-    if "vectorDB" not in st.session_state:
-        st.session_state.vectorDB = Chroma.from_documents(
-            documents=texts,
-            embedding=embedding
+        # Split pages into chunks
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=150
         )
-    else:
-        # If it already exists → add documents
-        st.session_state.vectorDB.add_documents(texts)
+        texts = text_splitter.split_documents(documents)
 
+        if "vectorDB" not in st.session_state:
+            # Create vectorDB if not exists
+            st.session_state.vectorDB = Chroma.from_documents(
+                documents=texts,
+                embedding=embedding
+            )
+            st.success("All documents processed successfully!")
+        else:
+            # Add new documents to existing vectorDB
+            st.session_state.vectorDB.add_documents(texts)
+
+            st.success("All documents processed successfully!")
+
+    except MemoryError:
+        st.error("PDF too large to process in memory. Try splitting it or processing fewer PDFs at once.")
+    except Exception as e:
+        st.error(f"Error processing document: {e}")
 
 def answer_question(user_question):
     vectordb = st.session_state.vectorDB
