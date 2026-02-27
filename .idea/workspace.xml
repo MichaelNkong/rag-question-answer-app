@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c34bca4-2b3b-42cb-ba11-0673ce5a10c9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.devcontainer/devcontainer.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rag_utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/rag_utility.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/703980_huelser_gabriel_2018.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep learning with PyTorch 1.x  implement deep learning techniques and neural network architecture variants using Python, second edition.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

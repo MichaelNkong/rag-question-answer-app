@@ -8,7 +8,9 @@ venv/
 
 # Streamlit secrets
 .streamlit/secrets.toml
-.pdf
+
+#pdf
+*.pdf
 
 # IDE files
 .idea/
