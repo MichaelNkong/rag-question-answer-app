@@ -1,5 +1,5 @@
 
-#Multi-Document RAG Application (Streamlit + LangChain + Chroma)
+# Multi-Document RAG Application (Streamlit + LangChain + Chroma)
 
 A production-style Retrieval-Augmented Generation (RAG) application that allows users to upload multiple PDFs and ask questions across all documents using an LLM.
 
@@ -21,7 +21,7 @@ Built with modern LLM tooling including LangChain, Chroma, HuggingFace embedding
 
 ✅ Session-based vector database (Streamlit session state)
 
-#Architecture Overview
+# Architecture Overview
 User Uploads PDFs
         ↓
 Document Loader (Unstructured / PyPDF)
@@ -189,7 +189,7 @@ Similarity-based retrieval (top-k search)
 "stuff" chain type (injects retrieved context into LLM prompt)
 
 
-Example Use Cases
+# Example Use Cases
 
 Academic research assistant
 
@@ -201,7 +201,7 @@ Internal company knowledge base
 
 AI-powered book reader
 
-#Key Design Decisions
+# Key Design Decisions
 Why Session-State Vector DB?
 
 Fast prototyping
@@ -216,7 +216,7 @@ Prevents context loss at boundaries
 
 Improves retrieval accuracy
 
-Why Separate Embeddings + LLM?
+# Why Separate Embeddings + LLM?
 
 Better modularity
 
@@ -234,7 +234,7 @@ Large LLM model for high-quality responses
 
 Optional persistent Chroma DB for scaling
 
-#Future Improvements
+# Future Improvements
 
 Persistent vector database storage
 
@@ -246,7 +246,7 @@ Citation highlighting with page numbers
 
 Authentication for enterprise deployment
 
-#What This Project Demonstrates
+# What This Project Demonstrates
 
 Practical implementation of RAG
 
@@ -263,3 +263,7 @@ Handling OCR edge cases
 Clean separation of concerns
 
 Production-minded architecture
+
+# Challenges Encountered & Solutions
+1. Large pdf files caused memory errors issues because the entire document is being loaded and processed at once in the memory.
+   - Solution is to load and process documents in chucks-> Still to be done -> for now the app is suitable for a certain file size. 

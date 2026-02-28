@@ -22,8 +22,10 @@ if uploaded_files:
 
         # Process PDF to Chroma vector store
         with st.spinner("Processing PDFs and creating embeddings..."):
-            process_document_to_chroma_db(save_path)
-        st.success("Documents processed successfully ✅")
+            if process_document_to_chroma_db(save_path):
+                  st.success("Documents processed successfully ✅")
+            else:
+                  st.error(f"Error processing document:")
 
 
 # Ask question

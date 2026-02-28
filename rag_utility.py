@@ -48,10 +48,12 @@ def process_document_to_chroma_db(file_path):
                 documents=texts,
                 embedding=embedding
             )
+            return True
 
         else:
             # Add new documents to existing vectorDB
             st.session_state.vectorDB.add_documents(texts)
+            return True
 
     except MemoryError:
         st.error("PDF too large to process in memory. Try splitting it or processing fewer PDFs at once.")
