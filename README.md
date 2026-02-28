@@ -267,4 +267,5 @@ Production-minded architecture
 
 # Challenges Encountered & Solutions
 1. Large pdf files caused memory errors issues because the entire document is being loaded and processed at once in the memory.
-   - Solution is to load and process documents in chucks-> Still to be done -> for now the app is suitable for a certain file size. 
+   - Solution is to load and process documents in chucks-> Still to be done -> for now the app is suitable for a certain file size.
+   - The system supports PDF ingestion up to ~15–20MB in cloud deployment environments. Larger files may require increased memory.
