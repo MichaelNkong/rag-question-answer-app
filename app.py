@@ -7,7 +7,8 @@ working_dir = os.getcwd()
 st.title("📄 Document Q&A RAG App")
 st.subheader("Upload PDFs and ask questions about their content")
 st.caption("Powered by LangChain, Chroma, and HuggingFace embeddings")
-
+MAX_FILE_SIZE_MB = 15
+MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024
 # Allow multiple PDF uploads
 uploaded_files = st.file_uploader(
     "Upload PDF(s)", type=["pdf"], accept_multiple_files=True
@@ -15,6 +16,12 @@ uploaded_files = st.file_uploader(
 
 if uploaded_files:
     for uploaded_file in uploaded_files:
+        if uploaded_file.size > MAX_FILE_SIZE_BYTES:
+            st.error(
+                f"{uploaded_file.name} exceeds the 15MB limit "
+                f"({uploaded_file.size / (1024 * 1024):.2f} MB)."
+            )
+            continue
         save_path = os.path.join(working_dir, uploaded_file.name)
         # Save file to local working directory
         with open(save_path, "wb") as f:
